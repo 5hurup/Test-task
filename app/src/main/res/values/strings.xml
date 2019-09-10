@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Test task</string>
+    <string name="common_error">Something went wrong</string>
+    <string name="hint_search">Поиск</string>
+    <string name="no_internet_connection">Нет подключения к сети</string>
+    <string name="melancholic">Меланхолик</string>
+    <string name="phlegmatic">Флегматик</string>
+    <string name="sanguine">Сангвиник</string>
+    <string name="choleric">Холерик</string>
+    <string name="something_went_wrong">Что-то пошло не так</string>
+</resources>

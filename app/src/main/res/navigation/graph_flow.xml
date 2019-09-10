@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph_flow"
+    app:startDestination="@id/contacts_flow_dest">
+
+    <fragment
+        android:id="@+id/contacts_flow_dest"
+        android:name="ru.task.app.presentation.flow.contacts.ContactsFlowFragment"
+        tools:layout="@layout/fragment_flow_contacts">
+        <action
+            android:id="@+id/action_contactsFlowFragment_to_contactDetailFlowFragment"
+            app:destination="@id/contact_detail_flow_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/contact_detail_flow_dest"
+        android:name="ru.task.app.presentation.flow.contact_detail.ContactDetailFlowFragment"
+        tools:layout="@layout/fragment_flow_contact_detail" >
+        <argument
+            android:name="contact"
+            app:argType="ru.task.app.domain.entity.ContactVO" />
+    </fragment>
+</navigation>
