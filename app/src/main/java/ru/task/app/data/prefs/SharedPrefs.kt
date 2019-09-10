@@ -7,21 +7,21 @@ import org.joda.time.DateTime
 
 internal class SharedPrefs(context: Context) {
     companion object {
-        const val SHARED_PREFS_KEY = "skbkontur_shared_prefs"
+        const val SHARED_PREFS_KEY = "task_test_shared_prefs"
         const val KEY_CONTACTS_LAST_UPDATE_TIME = "contacts_last_update_time"
 
-        private fun SharedPreferences.getLongOrNull(key: String): Long? =
-            getLong(key, Long.MIN_VALUE).takeIf { it != Long.MIN_VALUE }
+        private fun SharedPreferences.getStringOrNull(key: String): String? =
+            getString(key, "").ifBlank { null }
 
-        private fun SharedPreferences.putLongOrNull(key: String, value: Long?) =
-            edit { if (value == null) remove(key) else putLong(key, value) }
+        private fun SharedPreferences.putStringOrNull(key: String, value: String?) =
+            edit { if (value == null) remove(key) else putString(key, value) }
     }
 
     private val prefs = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE)
 
     var contactsLastUpdateTime: DateTime?
-        get() = prefs.getLongOrNull(KEY_CONTACTS_LAST_UPDATE_TIME)?.let { DateTime(it) }
-        set(value) = prefs.putLongOrNull(KEY_CONTACTS_LAST_UPDATE_TIME, value?.millis)
+        get() = prefs.getStringOrNull(KEY_CONTACTS_LAST_UPDATE_TIME)?.let { DateTime(it) }
+        set(value) = prefs.putStringOrNull(KEY_CONTACTS_LAST_UPDATE_TIME, value?.toString())
 
     fun flushPrefs() {
         prefs.edit { clear() }
